@@ -60,18 +60,24 @@ async function runE2ETest() {
     console.log(` -> Blood Request created! ID: ${createdRequest._id || createdRequest.id}`);
     console.log(` -> Status: ${createdRequest.status}, Urgency: ${createdRequest.urgency}, Patient: ${createdRequest.patientName} (${createdRequest.bloodGroup})`);
 
-    // STEP 3: LOGIN AS DONOR (John Carter, O-, New York)
-    console.log('\n[Step 3] Logging in as Donor (john.carter@donor.com)...');
-    const donorLoginRes = await apiRequest('/auth/login', {
+    // STEP 3: REGISTER FRESH DONOR (O-, New York)
+    const testEmail = `test.donor.${Date.now()}@donor.com`;
+    console.log(`\n[Step 3] Registering fresh eligible Donor (${testEmail})...`);
+    const donorRegRes = await apiRequest('/auth/register', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'john.carter@donor.com',
-        password: 'Password@123'
+        name: 'Alex Donor',
+        email: testEmail,
+        password: 'Password@123',
+        phone: '+1 555-0999',
+        role: 'donor',
+        bloodGroup: 'O-',
+        city: 'New York'
       })
     });
-    const donorToken = donorLoginRes.token;
-    const donorUser = donorLoginRes.user;
-    console.log(` -> Donor Logged in: ${donorUser.name} (${donorUser.bloodGroup}, ${donorUser.city})`);
+    const donorToken = donorRegRes.token;
+    const donorUser = donorRegRes.user;
+    console.log(` -> Donor Registered: ${donorUser.name} (${donorUser.bloodGroup}, ${donorUser.city})`);
     console.log(` -> Donor Initial Eligibility: isEligible = ${donorUser.eligibility.isEligible} (${donorUser.eligibility.reason})`);
 
     // STEP 4: DONOR FINDS MATCHING REQUEST
