@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Report - LifeLink Blood Donor Finder & Emergency Request Management System</title>
+  <style>
+    @media print {
+      body { font-size: 11pt; line-height: 1.4; color: #000; }
+      .no-print { display: none; }
+      .page-break { page-break-before: always; }
+      a { text-decoration: none; color: #000; }
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #f8fafc;
+    }
+    .container {
+      background: #ffffff;
+      padding: 50px 60px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+    h1 {
+      color: #b91c1c;
+      font-size: 28pt;
+      font-weight: 800;
+      margin-bottom: 6px;
+      border-bottom: 3px solid #fee2e2;
+      padding-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 14pt;
+      color: #64748b;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+    h2 {
+      color: #0f172a;
+      font-size: 18pt;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+    }
+    h3 {
+      color: #334155;
+      font-size: 13pt;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    p, li {
+      font-size: 11pt;
+      color: #334155;
+    }
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 10.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 9pt;
+      font-weight: 700;
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .badge-pass {
+      background: #dcfce7;
+      color: #166534;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 16px 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 9.5pt;
+      line-height: 1.5;
+    }
+    code {
+      font-family: Consolas, Monaco, 'Courier New', monospace;
+      background: #f1f5f9;
+      color: #b91c1c;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10pt;
+    }
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .formula {
+      background: #f8fafc;
+      border-left: 4px solid #b91c1c;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12pt;
+      color: #0f172a;
+    }
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+      transition: all 0.2s;
+    }
+    .print-btn:hover {
+      background: #b91c1c;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+
+  <div class="container">
+    <h1>LifeLink</h1>
+    <div class="subtitle">A Blood Donor Finder and Emergency Request Management System</div>
+    <p><strong>Major Project Title:</strong> Full-Stack Web Development Major Project</p>
+    <p><strong>Architecture:</strong> React Front-End &bull; Java + Spring Boot Back-End &bull; JDBC Database</p>
+    <p><strong>Evaluation Criteria:</strong> Front-End, Back-End, Implementation (Integration), and Project Report</p>
+
+    <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 24px 0;">
+
+    <h2>1. Abstract & Executive Summary</h2>
+    <p>
+      Timely access to safe blood transfusions is one of the most critical determinants of patient survival during traumatic accidents, complex surgeries, and acute medical emergencies. Conventional blood procurement mechanisms often rely on fragmented telephone trees, manual registry queries, or unverified social media appeals, resulting in critical delays, privacy breaches, and non-compliance with biological donation safety intervals.
+    </p>
+    <p>
+      <strong>LifeLink</strong> is an enterprise-grade full-stack web application engineered using <strong>React 19 (Vite 8)</strong> styled with Tailwind CSS on the front-end, <strong>Java 21 and Spring Boot 3.3.5</strong> on the back-end, and a <strong>JDBC Database</strong> (supporting both H2 persistent storage and MySQL). It automates the matching of verified, available blood donors with emergency hospital requests in real time.
+    </p>
+
+    <h2>2. Problem Statement & Objectives</h2>
+    <h3>2.1 Problem Statement</h3>
+    <ul>
+      <li><strong>Inefficient Matching:</strong> General blood drives do not account for immediate geographic and biological compatibility during emergency trauma cases.</li>
+      <li><strong>Donor Safety Neglect:</strong> Lack of automated interval enforcement leads to premature donations, putting donors at risk of anemia or fatigue.</li>
+      <li><strong>Privacy Vulnerability:</strong> Publicly broadcasting personal phone numbers on social forums exposes voluntary donors to spam, harassment, and fraud.</li>
+      <li><strong>Lack of Lifecycle Accountability:</strong> Emergency requests remain unresolved with no verifiable audit trail of hospital fulfillment or donor contribution history.</li>
+    </ul>
+
+    <h3>2.2 Project Objectives</h3>
+    <ul>
+      <li><strong>Automate Compatibility Matching:</strong> Implement medical ABO and Rh factor rules to pair patients with biologically compatible donors in the same municipality.</li>
+      <li><strong>Enforce Medical Safety:</strong> Calculate and track the mandatory 90-day biological rest interval for donors with real-time countdowns.</li>
+      <li><strong>Safeguard User Privacy:</strong> Mask donor telephone numbers in public searches and unlock them only upon verified donor consent.</li>
+      <li><strong>Deliver Role-Based Dashboards:</strong> Provide tailored, responsive interfaces for Donors, Hospital Requesters, and System Administrators.</li>
+      <li><strong>Provide Verifiable Audit Records:</strong> Automatically log completed donation records upon fulfillment and maintain permanent donor histories in the JDBC database.</li>
+    </ul>
+
+    <h2>3. System Architecture & Tech Stack</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Technology</th>
+          <th>Key Responsibilities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Front-End</strong></td>
+          <td>React 19, Vite 8, React Router v7, Axios, Tailwind CSS v4, Lucide Icons</td>
+          <td>Dynamic single-page application (SPA), responsive UI, role-scoped dashboards, client-side validation, JWT storage.</td>
+        </tr>
+        <tr>
+          <td><strong>Back-End API</strong></td>
+          <td>Java 21 (LTS), Spring Boot 3.3.5, Spring MVC, Spring Security</td>
+          <td>REST controllers, Jakarta validation (<code>@Valid</code>, <code>@NotBlank</code>), centralized error handling, business logic orchestration.</td>
+        </tr>
+        <tr>
+          <td><strong>Database (JDBC)</strong></td>
+          <td>Spring Data JPA, Hibernate, JDBC Driver (H2 & MySQL)</td>
+          <td>Relational storage (users, blood_requests, request_responses, donations), indexing, automatic timestamps, H2 interactive web console.</td>
+        </tr>
+        <tr>
+          <td><strong>Security</strong></td>
+          <td>JSON Web Tokens (JWT), BCryptPasswordEncoder</td>
+          <td>Stateless auth tokens (7-day validity), 10-round salted password hashing, password excluded via <code>@JsonIgnore</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Core Business Logic & Medical Rules</h2>
+    <h3>4.1 Red Blood Cell Compatibility Matrix</h3>
+    <p>
+      The platform implements strict biological red blood cell compatibility:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Blood Group</th>
+          <th>Can Donate To (Recipients)</th>
+          <th>Can Receive From (Donors)</th>
+          <th>Biological Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>O-</strong></td>
+          <td>O-, O+, A-, A+, B-, B+, AB-, AB+</td>
+          <td>O- only</td>
+          <td><span class="badge">Universal Donor</span></td>
+        </tr>
+        <tr>
+          <td><strong>O+</strong></td>
+          <td>O+, A+, B+, AB+</td>
+          <td>O-, O+</td>
+          <td>Compatible</td>
+        </tr>
+        <tr>
+          <td><strong>A-</strong></td>
+          <td>A-, A+, AB-, AB+</td>
+          <td>O-, A-</td>
+          <td>Compatible</td>
+        </tr>
+        <tr>
+          <td><strong>A+</strong></td>
+          <td>A+, AB+</td>
+          <td>O-, O+, A-, A+</td>
+          <td>Compatible</td>
+        </tr>
+        <tr>
+          <td><strong>B-</strong></td>
+          <td>B-, B+, AB-, AB+</td>
+          <td>O-, B-</td>
+          <td>Compatible</td>
+        </tr>
+        <tr>
+          <td><strong>B+</strong></td>
+          <td>B+, AB+</td>
+          <td>O-, O+, B-, B+</td>
+          <td>Compatible</td>
+        </tr>
+        <tr>
+          <td><strong>AB-</strong></td>
+          <td>AB-, AB+</td>
+          <td>O-, A-, B-, AB-</td>
+          <td>Compatible</td>
+        </tr>
+        <tr>
+          <td><strong>AB+</strong></td>
+          <td>AB+ only</td>
+          <td>O-, O+, A-, A+, B-, B+, AB-, AB+</td>
+          <td><span class="badge">Universal Recipient</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4.2 90-Day Medical Rest Cooldown Algorithm</h3>
+    <p>
+      To prevent post-donation anemia and comply with clinical guidelines, donor eligibility enforces a strict 90-day cooldown interval:
+    </p>
+    <div class="formula">
+      Elapsed Days = ChronoUnit.DAYS.between(lastDonationDate, LocalDate.now())<br><br>
+      Eligible = (isAvailable == true) &and; (isVerified == true) &and; (isBlocked == false) &and; (lastDonationDate is null &or; Elapsed Days &ge; 90)
+    </div>
+    <p>
+      When a request is marked <strong>Fulfilled</strong>, the system writes a new <code>Donation</code> entity and sets <code>lastDonationDate = LocalDate.now()</code>, resetting the donor's 90-day cooldown.
+    </p>
+
+    <h3>4.3 Two-Stage Contact Privacy Protection</h3>
+    <p>
+      In public searches and preliminary match listings, donor phone numbers are automatically masked (e.g., <code>+1 5*******</code>). Only when an eligible donor accepts an open request does the system reveal their direct contact hotline to the requester.
+    </p>
+
+    <h3>4.4 Request Lifecycle Automation</h3>
+    <p>
+      <code>Open</code> &rarr; <code>Accepted</code> &rarr; <code>Fulfilled</code> / <code>Closed</code> / <code>Expired</code>. Requests that exceed their <code>neededBy</code> timestamp automatically transition to <code>Expired</code>.
+    </p>
+
+    <h2>5. Functional Modules Description</h2>
+    <h3>5.1 Front-End Modules</h3>
+    <ul>
+      <li><strong>Landing & Live Search:</strong> Public blood group and city search with exact/compatible match modes and interactive SVG compatibility table.</li>
+      <li><strong>Authentication:</strong> Registration with role selection and 1-click evaluation demo login buttons.</li>
+      <li><strong>Donor Dashboard:</strong> Live availability toggle, eligibility banner with 90-day countdown, matching emergency feed, and verified donation history.</li>
+      <li><strong>Requester Portal:</strong> Emergency request broadcast form, matched donors modal, unlocked donor contact card, and fulfillment action button.</li>
+      <li><strong>Admin Console:</strong> Telemetry counters, SVG distribution charts (donors by group, requests by status), user verify/block controls, and request management.</li>
+    </ul>
+
+    <h3>5.2 Back-End REST API Specification</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Endpoint</th>
+          <th>Access</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>POST</code></td><td><code>/api/auth/register</code></td><td>Public</td><td>Register new donor or requester.</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/auth/login</code></td><td>Public</td><td>Authenticate user and issue JWT token.</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/auth/me</code></td><td>Private</td><td>Fetch profile and calculated donor eligibility.</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/donors</code></td><td>Public</td><td>Search eligible donors (phone numbers masked).</td></tr>
+        <tr><td><code>PATCH</code></td><td><code>/api/donors/availability</code></td><td>Donor</td><td>Toggle donor availability ON / OFF.</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/donors/history</code></td><td>Donor</td><td>View verified donation records.</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/requests</code></td><td>Requester</td><td>Submit emergency blood requisition.</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/requests</code></td><td>Private</td><td>Role-scoped requests list.</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/requests/:id/accept</code></td><td>Donor</td><td>Accept request and reveal hotline to requester.</td></tr>
+        <tr><td><code>PATCH</code></td><td><code>/api/requests/:id/status</code></td><td>Requester/Admin</td><td>Mark request as Fulfilled or Closed.</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/admin/stats</code></td><td>Admin</td><td>Aggregate charts and KPI statistics.</td></tr>
+        <tr><td><code>PATCH</code></td><td><code>/api/admin/users/:id/verify</code></td><td>Admin</td><td>Toggle user verification status.</td></tr>
+        <tr><td><code>PATCH</code></td><td><code>/api/admin/users/:id/block</code></td><td>Admin</td><td>Toggle user account block status.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>6. Integration & Verification Results</h2>
+    <p>
+      An automated end-to-end integration test (<code>server/test_flow.js</code>) was executed to verify the full flow:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Operation Tested</th>
+          <th>Expected Outcome</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Requester Login (<code>robert@requester.com</code>)</td><td>JWT token issued and session verified</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>2</td><td>Post Emergency Request (O-, Critical, NY)</td><td>Created in <code>Open</code> status</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>3</td><td>Donor Login (<code>john.carter@donor.com</code>, O-)</td><td>Donor confirmed eligible (<code>isEligible: true</code>)</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>4</td><td>Query Compatible Requests</td><td>Emergency request discovered in feed</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>5</td><td>Donor Accepts Request</td><td>Status transitions to <code>Accepted</code></td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>6</td><td>Requester Inspects Request</td><td>Donor phone revealed (<code>+1 555-0201</code>)</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>7</td><td>Requester Marks <code>Fulfilled</code></td><td>Status updated; <code>Donation</code> record created</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>8</td><td>Verify Donor 90-Day Cooldown</td><td><code>isEligible: false</code>, 90 days remaining</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>9</td><td>Query Donation History</td><td>Completed donation verified in history</td><td><span class="badge badge-pass">PASS</span></td></tr>
+        <tr><td>10</td><td>Public Search Privacy Check</td><td>Phone numbers confirmed masked (<code>+1 5*******</code>)</td><td><span class="badge badge-pass">PASS</span></td></tr>
+      </tbody>
+    </table>
+
+    <h2>7. Conclusion</h2>
+    <p>
+      <strong>LifeLink</strong> successfully demonstrates the application of modern full-stack web engineering using <strong>React, Java, Spring Boot, and JDBC</strong>. By automating biological compatibility matching, safeguarding donor privacy, enforcing medical safety rest intervals, and providing comprehensive administrative governance, the platform delivers an end-to-end solution for urgent blood requisition.
+    </p>
+  </div>
+</body>
+</html>
